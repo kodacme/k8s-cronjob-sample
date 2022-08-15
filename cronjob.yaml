@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: slack-bot
+spec:
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: bot-job
+              image: kodacme/slack-bot:0.1
+          restartPolicy: OnFailure
+  # default
+  concurrencyPolicy: Allow
+  # default
+  suspend: false
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 1
