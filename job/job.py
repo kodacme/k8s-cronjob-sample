@@ -1,8 +1,9 @@
 import json
+import os
 
 import requests
 
-SLACK_API_URL = "YOUR_SLACK_WEBHOOK_URL"
+SLACK_API_URL = os.getenv('SLACK_WEBHOOK_URL')
 
 
 def execute():

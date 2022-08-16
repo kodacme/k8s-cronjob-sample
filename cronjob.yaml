@@ -11,6 +11,12 @@ spec:
           containers:
             - name: bot-job
               image: kodacme/slack-bot:0.1
+              env:
+                - name: SLACK_WEBHOOK_URL
+                  valueFrom:
+                    configMapKeyRef:
+                      name: slack-config
+                      key: slack_webhook_url
           restartPolicy: OnFailure
   # default
   concurrencyPolicy: Allow
